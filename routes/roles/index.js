@@ -9,7 +9,7 @@ module.exports = (db) => {
     const auth = require('../../server/auth')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 50, "For mange anmodninger. Prøv igen senere.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 50, "Too many requests. Try again later.")
 
     router.get('/', rateLimiter, async (req, res) => {
         var _roles = await roles.getRoles();
@@ -34,7 +34,7 @@ module.exports = (db) => {
                 await roles.updateRole(id, label, color, (response) => {
                     return res.status(response.status).json({ message: response.message });
                 });
-            } else return res.status(400).json({ message: "Ranken '" + id + "' findes ikke." })
+            } else return res.status(400).json({ message: "Role with id '" + id + "' doesn't exists" })
         } else {
             await roles.createRole(label, color, (response) => {
                 return res.status(response.status).json({ message: response.message });

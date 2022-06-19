@@ -19,9 +19,9 @@ export default function UserList({ sx }: UserListProps) {
             <Table highlightOnHover verticalSpacing={'md'} horizontalSpacing='xl'>
                 <Box component='thead'>
                     <Box component='tr'>
-                        <Text component='th'>Brugernavn</Text> 
-                        <th>Rank</th> 
-                        <th>Oprettet</th> 
+                        <Text component='th'>Username</Text> 
+                        <th>Role</th> 
+                        <th>Joined</th> 
                     </Box>
                 </Box>
                 <tbody>

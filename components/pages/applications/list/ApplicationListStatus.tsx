@@ -14,7 +14,7 @@ export default function ApplicationListStatus({ status, form, full }: { status: 
             {
                 isLoading ? <LoadingScreen/>
                 : isError ? <Error/>
-                    : !form.permissions[user.role]?.viewOthers ? <Error error='Du har ikke adgang til at se denne side.'/> 
+                    : !form.permissions[user.role]?.viewOthers ? <Error error='You do not have permission to view this list.'/> 
                         : <Container size={'md'}>
                             <Box mt={30} mb={30}>
                                 <ApplicationList status={status} form={form} full={full}/>

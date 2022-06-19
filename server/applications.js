@@ -25,9 +25,9 @@ module.exports = (db) => {
                 status: "pending",
                 comments: [],
                 answers: answers
-            }, (err, res) => callback({ status: 200, message: "Ansøgningen er blevet oprettet!", applicationId: res.insertedId }));
+            }, (err, res) => callback({ status: 200, message: "Application has been created!", applicationId: res.insertedId }));
         } catch(err) {
-            callback({ status: 500, message: 'Der opstod en intern fejl.' });
+            callback({ status: 500, message: 'An internal error occurred.' });
         }
     }
 
@@ -123,13 +123,13 @@ module.exports = (db) => {
             await db.applications.deleteOne({ _id: applicationObject }, (err, res) => {
                 if(err){
                     console.log(err);
-                    return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+                    return callback({ status: 500, message: 'An internal error occurred.' });
                 }
-                return callback({ status: 200, message: 'Ansøgningen er blevet slettet.' })
+                return callback({ status: 200, message: "Application has been deleted!" })
             });
         }
         catch(err) {
-            return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+            return callback({ status: 500, message: 'An internal error occurred.' });
         }
     }
 
@@ -147,13 +147,13 @@ module.exports = (db) => {
             await db.applications.updateOne({ _id: applicationObject }, { $set: { status: status, statusUpdatedAt: new Date().getTime(), statusUpdatedBy: userObject } }, (err, res) => {
                 if(err){
                     console.log(err);
-                    return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+                    return callback({ status: 500, message: 'An internal error occurred.' });
                 }
-                return callback({ status: 200, message: "Ansøgningens status er blevet ændret." })
+                return callback({ status: 200, message: "Application status has been changed!" })
             });
         }
         catch(err) {
-            return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+            return callback({ status: 500, message: 'An internal error occurred.' });
         }
     }
 
@@ -171,13 +171,13 @@ module.exports = (db) => {
             await db.applications.updateOne({ _id: applicationObject }, { $push: { comments: { user: userObject, text: comment, createdAt: new Date().getTime() } } }, (err, res) => {
                 if(err){
                     console.log(err);
-                    return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+                    return callback({ status: 500, message: 'An internal error occurred.' });
                 }
-                return callback({ status: 200, message: "Du har tilføjet en kommentar!" })
+                return callback({ status: 200, message: "Comment has been created!" })
             });
         }
         catch(err) {
-            return callback({ status: 500, message: 'Der opstod en intern fejl.' });
+            return callback({ status: 500, message: 'An internal error occurred.' });
         }
     }
 

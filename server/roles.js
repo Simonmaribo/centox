@@ -47,10 +47,10 @@ module.exports = (db) => {
      * @returns {Object} Updated role
      */
     obj.updateRole = async (id, label, color, cb) => {
-        if(id.toLowerCase() != label.toLowerCase()) return cb({ status: 400, message: "Bogstaverne i ranken kan ikke ændres, kun om de er store el. små." });
+        if(id.toLowerCase() != label.toLowerCase()) return cb({ status: 400, message: "The letters in a role cannot be changed, only upper- and lowercase." });
         await db.roles.updateOne({id: id}, {$set: {label: label, color: color.toLowerCase() }}, (err, res) => {
-            if(err) return cb({ status: 500, message: `Der opstod en fejl under opdatering af ranken '${label}'` });
-            return cb({ status: 200, message: `Ranken '${label}' er blevet opdateret.` });
+            if(err) return cb({ status: 500, message: `Error occurred when updating role '${label}'` });
+            return cb({ status: 200, message: `Role '${label}' has been updated.` });
         });
     }
 
@@ -62,10 +62,10 @@ module.exports = (db) => {
      * @throws {Error} If the role already exists
      */
     obj.createRole = async (label, color, cb) => {
-        if(await obj.roleExists(label)) return cb({ status: 400, message: `Ranken '${label}' findes allerede.` });
+        if(await obj.roleExists(label)) return cb({ status: 400, message: `The role '${label}' already exists.` });
         else await db.roles.insertOne({id: label.toLowerCase(), label: label, color: color.toLowerCase()}, (err, res) => {
-            if(err) return cb({ status: 500, message: `Der opstod en fejl under oprettelse af ranken '${label}'` });
-            return cb({ status: 200, message: `Ranken '${label}' er blevet lavet!` });
+            if(err) return cb({ status: 500, message: `Error occurred when creating role '${label}'` });
+            return cb({ status: 200, message: `Role '${label}' has been created!` });
         });
     }
 
@@ -77,14 +77,14 @@ module.exports = (db) => {
     obj.deleteRole = async (id, cb) => {
         var role = await obj.getRole(id);
 
-        if(!role) return cb({ status: 400, message: `Ranken '${id}' findes ikke.` });
-        if(role.deletable === false) return cb({ status: 400, message: `Ranken '${id}' kan ikke blive slettet.` });
+        if(!role) return cb({ status: 400, message: `The role '${id}' doesn't exists.` });
+        if(role.deletable === false) return cb({ status: 400, message: `The role '${id}' cannot be deleted.` });
         
         else {
             await obj.resetRole(id);
             await db.roles.deleteOne({id: id}, (err, res) => {
-                if(err) return cb({ status: 500, message: `Der opstod en fejl under sletning af ranken '${id}'` });
-                return cb({ status: 200, message: `Ranken '${id}' er blevet slettet.` });
+                if(err) return cb({ status: 500, message: `Error occurred when deleting role '${id}'` });
+                return cb({ status: 200, message: `Role '${id}' has been deleted.` });
             });
         }
     }
@@ -115,7 +115,7 @@ module.exports = (db) => {
      * @returns {Function} Callback function
      */
     obj.resetRole = async (role) => {
-        await db.users.updateMany({role: role.toLowerCase()}, {$set: {role: 'spiller'}});
+        await db.users.updateMany({role: role.toLowerCase()}, {$set: {role: 'default'}});
     }
 
     return obj;

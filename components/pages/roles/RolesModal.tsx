@@ -22,8 +22,8 @@ interface RolesModalValues {
 }
 
 const schema = Yup.object().shape({
-    label: Yup.string().required("Feltet 'navn' er påkrævet."),
-    color: Yup.string().required("Feltet 'color' er påkrævet."),
+    label: Yup.string().required("The label is required."),
+    color: Yup.string().required("The color is required."),
 });
 
 
@@ -52,7 +52,7 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Succes',
+                    title: 'Success',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -61,7 +61,7 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Fejl',
+                    title: 'Error',
                     color: 'red',
                     radius: 'md'
                 })
@@ -79,7 +79,7 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Succes',
+                    title: 'Success',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -88,7 +88,7 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Fejl',
+                    title: 'Error',
                     color: 'red',
                     radius: 'md'
                 })
@@ -98,18 +98,18 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
     }
     
     return (
-        <Modal opened={true} onClose={() => setVisible(false)} title={<Text weight={600}>{role ? `Redigerer '${role.label}'` : "Opretter ny rank"}</Text>}>
+        <Modal opened={true} onClose={() => setVisible(false)} title={<Text weight={600}>{role ? `Editing '${role.label}'` : "Creating new role"}</Text>}>
             <form onSubmit={form.onSubmit(async (values) => await onSubmit(values))}>
                 <TextInput
                     required
-                    label="Navn"
-                    placeholder="Admin"
+                    label="Label"
+                    placeholder="The label of the role"
                     {...form.getInputProps('label')}
                 />
                 <Select
                     required
-                    label="Farve"
-                    placeholder="red"
+                    label="Color"
+                    placeholder="The color of the role"
                     {...form.getInputProps('color')}
                     data={[
                         { label: 'Gray', value: 'gray' },
@@ -128,8 +128,8 @@ export default function RolesModal({ role, setVisible }: IRolesModalProps){
                     ]}
                 />
                 <Group position="right" mt="xl">
-                    {role && <Button onClick={() => deleteRoleWithId({ id: role.id })} color='red'>Slet</Button>}
-                    <Button type="submit" loading={isSubmitting}>{role ? 'Gem' : 'Opret rank'}</Button>
+                    {role && <Button onClick={() => deleteRoleWithId({ id: role.id })} color='red'>Delete</Button>}
+                    <Button type="submit" loading={isSubmitting}>{role ? 'Save' : 'Create role'}</Button>
                 </Group>
             </form>
         </Modal>

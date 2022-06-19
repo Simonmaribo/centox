@@ -17,14 +17,14 @@ export default function ApplicationListItem({ application, full }: { application
             { isLoading || isError || !data || !data.user ?
                 <Box>
                     <Avatar radius="xl" />  
-                    <Text weight={500}>{`BRUGER#0000`}</Text>   
+                    <Text weight={500}>{`USER#0000`}</Text>   
                 </Box>
                 :
                 <Box component='td' sx={{ display: 'flex', alignItems: 'center', gap: '1rem'}}>
                     <Avatar src={data.user.avatar} radius="xl" />
                     <Text weight={500}>{data.user.username}</Text>
                     {data.user.owner &&
-                        <Tooltip withArrow label={'Denne bruger er ejeren af siden.'} transition='fade' transitionDuration={200} sx={{ marginLeft: '-1rem'}}>
+                        <Tooltip withArrow label={'This user is the owner.'} transition='fade' transitionDuration={200} sx={{ marginLeft: '-1rem'}}>
                             <ActionIcon color="orange" radius="xs" variant="transparent"><FaCrown/></ActionIcon>
                         </Tooltip>
                     }
@@ -35,14 +35,14 @@ export default function ApplicationListItem({ application, full }: { application
                 <td>
                 <Tooltip withArrow label={dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                     {/* @ts-ignore */}
-                    {`${dayjs(application.statusUpdatedAt).fromNow(true)} siden`}
+                    {`${dayjs(application.statusUpdatedAt).fromNow(true)} ago`}
                 </Tooltip>
                 </td>
             }
             <td>
                 <Tooltip withArrow label={dayjs(application.createdAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                     {/* @ts-ignore */}
-                    {`${dayjs(application.createdAt).fromNow(true)} siden`}
+                    {`${dayjs(application.createdAt).fromNow(true)} ago`}
                 </Tooltip>
             </td>
         </Box>

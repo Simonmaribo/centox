@@ -24,12 +24,12 @@ export default function AdminMenu({ user, application, form }: { user: User, app
             <Menu transition="pop" withArrow placement="end" control={<ActionIcon size={35} color='blue'><BiCog size={25}/></ActionIcon>}>
                 {(form.permissions[viewer.role]?.changeStatus) && 
                     <Menu.Item icon={<AiOutlineEdit size={16} />} onClick={() => setVisibleModal('update')}>
-                        <Text weight={500} size="sm">Ændre status</Text>
+                        <Text weight={500} size="sm">Update status</Text>
                     </Menu.Item>                
                 }
                 {(viewer.role === 'admin' || user._id.toString() == viewer._id.toString()) &&
                     <Menu.Item icon={<MdDeleteForever size={16} />} color='red' onClick={() => setVisibleModal('delete')}>
-                        <Text weight={500} size="sm">Slet ansøgning</Text>
+                        <Text weight={500} size="sm">Delete application</Text>
                     </Menu.Item>
                 }
             </Menu>

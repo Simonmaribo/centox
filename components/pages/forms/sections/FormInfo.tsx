@@ -6,11 +6,11 @@ export default function FormInfo({ form, setForm }: { form: Form, setForm: (form
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem'}}>
-            <TextInput label="Navn" description="Navnet som brugeren ser" placeholder="Supporter" required sx={{ flexGrow: 1 }} id={'formName'} 
+            <TextInput label="Name" description="The name the user sees" placeholder="Supporter" required sx={{ flexGrow: 1 }} id={'formName'} 
                 value={form.name || ''}
                 onChange={(event) => setForm({...form, name: event.target.value})}
             />
-            <TextInput label="Ikon" description="Find ikoner på fontawesome.com" placeholder="fa-solid fa-handshake-angle" sx={{flexGrow: 1}} id={'formicon'} 
+            <TextInput label="Icon" description="Find icons on fontawesome.com" placeholder="fa-solid fa-handshake-angle" sx={{flexGrow: 1}} id={'formicon'} 
                 value={form.icon || ''}
                 onChange={(event) => setForm({...form, icon: event.target.value})}
             />

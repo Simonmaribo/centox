@@ -21,7 +21,7 @@ export default function FormBox({ form: startForm }: { form: Form }){
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Succes',
+                    title: 'Success',
                     color: 'teal',
                     radius: 'md'
                 })                
@@ -30,7 +30,7 @@ export default function FormBox({ form: startForm }: { form: Form }){
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Fejl',
+                    title: 'Error',
                     color: 'red',
                     radius: 'md'
                 })
@@ -40,13 +40,13 @@ export default function FormBox({ form: startForm }: { form: Form }){
 
     return (
         <Paper p='md' withBorder sx={{ display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-            <Text weight={600} sx={{ fontSize: 35 }} color='dark'>Ændrer skema</Text>
+            <Text weight={600} sx={{ fontSize: 35 }} color='dark'>Editing form</Text>
             <FormInfo form={form} setForm={setForm}/>
             <FormPermissions form={form} setForm={setForm}/>
             <FormFields form={form} setForm={setForm}/>
             <Group position="right" mt="xl">
                 <DeleteFormButton isSubmitting={isSubmitting} form={form}/>
-                <Button loading={isSubmitting} variant='outline' onClick={() => saveChanges()}>Gem</Button>
+                <Button loading={isSubmitting} variant='outline' onClick={() => saveChanges()}>Save</Button>
             </Group>
         </Paper>
     )

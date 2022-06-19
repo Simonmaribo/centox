@@ -14,31 +14,31 @@ const Meta = ({ title, keywords, description, icon }: { title: string, keywords:
 
       <meta charSet='utf-8' />
       <link rel='icon' href={icon} />
-      <title>{title} | Plexit</title>
+      <title>{title} | Centox</title>
 
 
       <meta property='og:title' content={title}/>
-      <meta property='og:site_name' content="Plexit"/>
-      <meta property="og:url" content="https://plexit.dk"/>
+      <meta property='og:site_name' content="Centox"/>
+      <meta property="og:url" content="https://centox.dk"/>
       <meta property='og:description' content={description}/>
       <meta property="og:type" content="website"/>
-      <meta property="og:image" content="https://plexit.dk/png/banner.png"/>
+      <meta property="og:image" content="https://centox.dk/png/banner.png"/>
 
       <meta property='twitter:card' content='summary_large_image'/>
-      <meta property='twitter:url' content="https://plexit.dk"/>
+      <meta property='twitter:url' content="https://centox.dk"/>
       <meta property='twitter:title' content={title}/>
       <meta property="twitter:description" content={description}/>
-      <meta property='twitter:image' content="https://plexit.dk/png/banner.png"/>
+      <meta property='twitter:image' content="https://centox.dk/png/banner.png"/>
 
     </Head>
   )
 }
 
 Meta.defaultProps = {
-  title: 'Plexit - Forum',
+  title: 'Centox - Free Forum Software',
   keywords: 'Some nice keywords right here.',
   description: 'Descriptive description',
-  icon: '/logo.png'
+  icon: '/favicon.svg'
 }
 
 export default Meta

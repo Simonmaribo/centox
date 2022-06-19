@@ -9,27 +9,27 @@ import FormField from "../../../../types/formField";
 
 export default function AddFieldButton({ handleAddField }: { handleAddField: (type: FormField['type']) => void }) {
     return (
-        <Menu control={<Button color='primary' leftIcon={<FaPlus/>}>Tilføj felt</Button>} position='top'>
+        <Menu control={<Button color='primary' leftIcon={<FaPlus/>}>Add field</Button>} position='top'>
             <Menu.Label>Content</Menu.Label>
             <Menu.Item icon={<BsParagraph/>} onClick={() => handleAddField('text')}>
-                <Text weight={600}>Tekst</Text>
+                <Text weight={600}>Text</Text>
             </Menu.Item>
             <Menu.Item icon={<BiHeading/>} onClick={() => handleAddField('heading')}>
-                <Text weight={600}>Overskrift</Text>
+                <Text weight={600}>Heading</Text>
             </Menu.Item>
 
             <Menu.Label>Input</Menu.Label>
             <Menu.Item icon={<MdShortText/>} onClick={() => handleAddField('shorttext')}>
-                <Text weight={600}>Kort tekst</Text>
+                <Text weight={600}>Short Text</Text>
             </Menu.Item>
             <Menu.Item icon={<GrTextAlignLeft/>} onClick={() => handleAddField('longtext')}>
-                <Text weight={600}>Lang tekst</Text>
+                <Text weight={600}>Long Text</Text>
             </Menu.Item>
             <Menu.Item icon={<MdOutlineArrowDropDownCircle/>} disabled>
-                <Text weight={600}>Vælg</Text>
+                <Text weight={600}>Select</Text>
             </Menu.Item>
             <Menu.Item icon={<TbSelect/>} onClick={() => handleAddField('checkbox')}>
-                <Text weight={600}>Afkrydsningsfelt</Text>
+                <Text weight={600}>Checkbox</Text>
             </Menu.Item>
         </Menu>   
     )

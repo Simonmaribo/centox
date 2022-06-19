@@ -5,9 +5,9 @@ import getRoles from "../api/roles/getRoles";
 export default function RoleBadge({ role }: { role: string | undefined }){
 
     const { isLoading, isError, data: roles } = useQuery('roles', getRoles)
-    if(isLoading || isError || !roles) return <Badge color="gray">Loader...</Badge>
+    if(isLoading || isError || !roles) return <Badge color="gray">Loading...</Badge>
 
-    const label = role ? roles[role]?.label : "Spiller";
+    const label = role ? roles[role]?.label : "Default";
     const color = role ? roles[role]?.color : "grey";
 
     return (

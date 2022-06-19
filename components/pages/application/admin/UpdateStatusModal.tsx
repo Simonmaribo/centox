@@ -17,7 +17,7 @@ export default function UpdateStatusModal({ application, isVisible, setVisible }
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Succes',
+                    title: 'Success',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -26,7 +26,7 @@ export default function UpdateStatusModal({ application, isVisible, setVisible }
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Fejl',
+                    title: 'Error',
                     color: 'red',
                     radius: 'md'
                 })
@@ -35,21 +35,21 @@ export default function UpdateStatusModal({ application, isVisible, setVisible }
     }
     
     return (
-        <Modal opened={isVisible} onClose={() => setVisible(false)} title={<Text weight={600}>Ændrer ansøgningens status</Text>}>
+        <Modal opened={isVisible} onClose={() => setVisible(false)} title={<Text weight={600}>Change status of application</Text>}>
             <Select
                 required
                 label="Status"
-                placeholder="Afventer"
+                placeholder="Pending"
                 value={status}
                 onChange={(value: 'pending' | 'rejected' | 'accepted') => setStatus(value)}
                 data={[
-                    { value: 'pending', label: 'Afventer' },
-                    { value: 'rejected', label: 'Afvist' },
-                    { value: 'accepted', label: 'Accepteret' },
+                    { value: 'pending', label: 'Pending' },
+                    { value: 'rejected', label: 'Rejected' },
+                    { value: 'accepted', label: 'Accepted' },
                 ]}
             />
             <Group position="right" mt="xl" onClick={onSubmit}>
-                <Button type="submit">Gem</Button>
+                <Button type="submit">Confirm</Button>
             </Group>
         </Modal>
     )

@@ -20,7 +20,7 @@ export default function DiscordLoginButton({ clientId, redirectUri }: { clientId
                 transition: 'color 0.2s, background-color 0.2s',
             }}
         >
-            <Box sx={{ paddingRight: '0.5rem' }}><BsDiscord/></Box> Log ind med Discord
+            <Box sx={{ paddingRight: '0.5rem' }}><BsDiscord/></Box> Login with Discord
         </Anchor>
     )
 }

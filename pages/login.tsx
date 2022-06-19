@@ -40,16 +40,16 @@ export default function Login() {
 
     return (
         <>
-            <Meta title="Log ind med Discord"/>
+            <Meta title="Login with Discord"/>
             <Center style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white', borderRadius: '0.25rem', padding: '1.5rem 2rem 2rem 2rem', marginBottom: '1rem' }}>
                     <Box sx={{ padding: '1.5rem 0' }}>
-                        <Image src="/logo.png" alt="logo" width={1920/6} height={1920/6}/>
+                        <Image src="/logo.svg" alt="logo" width={170*2} height={41*2}/>
                     </Box>
                     <DiscordLoginButton clientId={config.discord.client_id} redirectUri={config.discord.redirect_uri}/>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Anchor href="https://github.com/Simonmaribo/centox" target='_blank' color='gray' size='xs'>
+                    <Anchor href="https://github.com/simonmaribo/centox" target='_blank' color='gray' size='xs'>
                         © {new Date().getFullYear()} Centox - A Open Source Project.
                     </Anchor>
                 </Box>

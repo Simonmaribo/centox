@@ -3,8 +3,8 @@ import PageContent from "../components/elements/PageContent";
 
 export default function PageNotFound(){
     return (
-        <PageContent title="Siden blev ikke fundet">
-            <Error error="Siden blev ikke fundet."/>
+        <PageContent title="Page not found">
+            <Error error="Page not found"/>
         </PageContent>
     )
 }

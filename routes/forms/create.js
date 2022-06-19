@@ -9,7 +9,7 @@ module.exports = (db) => {
     const auth = require('../../server/auth')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 35, "For mange anmodninger. Prøv igen senere.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 35, "Too many requests. Try again later.")
 
     router.post('/', rateLimiter, auth.ensureAuthenticationWithUser, async (req, res) => {
         if(req.user?.role !== 'admin') return res.status(403).json({ message: 'Forbidden' });

@@ -46,11 +46,11 @@ export default function Sidebar({ isExtended, admin }: { isExtended?: boolean, a
         var permission = form.permissions[user.role];
         if(permission.create || permission.comment || permission.viewOthers || permission.changeStatus) {	
             var links: SidebarLink[] = [];
-            if(permission.create) links.push({ label: 'Opret ansøgning', link: `/forms/${form._id}/create` });
+            if(permission.create) links.push({ label: 'Create application', link: `/forms/${form._id}/create` });
             if(permission.viewOthers) {
-                links.push({ label: 'Afventer svar', link: `/forms/${form._id}/open` });
+                links.push({ label: 'Open applications', link: `/forms/${form._id}/open` });
                 if(permission.changeStatus)
-                    links.push({ label: 'Lukkede ansøgninger', link: `/forms/${form._id}/closed` });
+                    links.push({ label: 'Closed applications', link: `/forms/${form._id}/closed` });
                 
             }
 
@@ -65,7 +65,7 @@ export default function Sidebar({ isExtended, admin }: { isExtended?: boolean, a
     const tabs: SidebarSection = {
         default: [
             {
-                group: 'Ansøgninger',
+                group: 'Forms',
                 links: formLinks
             }
         ],
@@ -73,9 +73,9 @@ export default function Sidebar({ isExtended, admin }: { isExtended?: boolean, a
             {
                 group: 'Administration',
                 links: [
-                    { link: '/admin/users', label: 'Brugere', icon: FaUsers },
-                    { link: '/admin/roles', label: 'Ranks', icon: FaListUl },
-                    { link: '/admin/forms', label: 'Skemaer', icon: FaDatabase },
+                    { link: '/admin/users', label: 'Users', icon: FaUsers },
+                    { link: '/admin/roles', label: 'Roles', icon: FaListUl },
+                    { link: '/admin/forms', label: 'Forms', icon: FaDatabase },
                 ]
             }
         ],
@@ -95,7 +95,7 @@ export default function Sidebar({ isExtended, admin }: { isExtended?: boolean, a
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'center', cursor: 'pointer' }}>
                                 <Anchor component={Link} href="/">
-                                    <Image src="/logo.png" alt="logo" width={1920/10} height={1920/10}/>
+                                    <Image src="/logo.svg" alt="logo" width={170} height={41}/>
                                 </Anchor>
                             </Box>
                             <Box>
@@ -106,7 +106,7 @@ export default function Sidebar({ isExtended, admin }: { isExtended?: boolean, a
                                         transitionTimingFunction="ease"
                                         fullWidth
                                         data={[
-                                            { label: 'Bruger', value: 'default' },
+                                            { label: 'User', value: 'default' },
                                             { label: 'Admin', value: 'admin' },
                                         ]}
                                     />

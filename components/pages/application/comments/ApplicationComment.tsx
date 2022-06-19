@@ -23,7 +23,7 @@ export default function ApplicationComment({ comment }: { comment: Comment }) {
                     <Text size="xs" color="dimmed">
                         {new Date().getTime() < comment.createdAt + 127800000 ?
                             /* @ts-ignore */
-                            `${dayjs(comment.createdAt).fromNow(true)} siden`
+                            `${dayjs(comment.createdAt).fromNow(true)} ago`
                             :
                             dayjs(comment.createdAt).format('HH:mm, DD/MM/YYYY')
                         }

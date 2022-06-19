@@ -11,7 +11,7 @@ module.exports = (db) => {
     const auth = require('../../server/auth')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 5, "For mange anmodninger. Prøv igen senere.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 5, "Too many requests. Try again later.")
 
     // Create OAuth2
     const oauth = new DiscordOauth2({
@@ -67,7 +67,7 @@ module.exports = (db) => {
         .catch((err) => {
             return res.status(404).json({
                 status: 404,
-                message: "Koden findes ikke.",
+                message: "Code does not exist",
             })     
         })
 
