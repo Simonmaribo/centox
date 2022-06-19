@@ -1,5 +1,6 @@
 export default interface Comment {
+    type: 'comment';
     user: string;
-    createdAt: number;
+    timestamp: number;
     text: string;
 }

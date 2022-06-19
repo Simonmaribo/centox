@@ -1,31 +1,30 @@
-import { Anchor, Avatar, Box, Group, Text, Tooltip } from "@mantine/core";
+import { Box, Text, Tooltip } from "@mantine/core";
 import dayjs from "dayjs";
-import Link from "next/link";
 import { useQuery } from "react-query";
 import getUser from "../../../api/users/getUser";
 import UserBadge from "../../../elements/UserBadge";
 import Comment from "../../../types/comment";
 
-export default function ApplicationComment({ comment }: { comment: Comment }) {
+export default function ApplicationComment({ interaction }: { interaction: Comment }) {
 
-    const { isLoading, isError, data } = useQuery(['userByObjectId', comment.user], async () => await getUser(comment.user));
+    const { isLoading, isError, data } = useQuery(['userByObjectId', interaction.user], async () => await getUser(interaction.user));
 
     return (
         <Box>
             {isLoading ? <Text>Loading...</Text> : isError || !data?.user ? <Text>Error</Text> : <UserBadge user={data?.user}/>}
             <Box sx={{ paddingLeft: 34, paddingRight: 34 }}>
                 {
-                    comment.text.split('\n').map((line, index) =>
+                    interaction.text.split('\n').map((line, index) =>
                         <Text size={'sm'} key={index}>{line}</Text>
                     )
                 }
-                <Tooltip withArrow label={dayjs(comment.createdAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
+                <Tooltip withArrow label={dayjs(interaction.timestamp).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                     <Text size="xs" color="dimmed">
-                        {new Date().getTime() < comment.createdAt + 127800000 ?
+                        {new Date().getTime() < interaction.timestamp + 127800000 ?
                             /* @ts-ignore */
-                            `${dayjs(comment.createdAt).fromNow(true)} siden`
+                            `${dayjs(interaction.timestamp).fromNow(true)} siden`
                             :
-                            dayjs(comment.createdAt).format('HH:mm, DD/MM/YYYY')
+                            dayjs(interaction.timestamp).format('HH:mm, DD/MM/YYYY')
                         }
                     </Text>
                 </Tooltip>

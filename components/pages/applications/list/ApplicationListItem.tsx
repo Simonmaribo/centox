@@ -33,10 +33,10 @@ export default function ApplicationListItem({ application, full }: { application
             <td><StatusBadge status={application.status}/></td>
             {full && 
                 <td>
-                <Tooltip withArrow label={dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
-                    {/* @ts-ignore */}
-                    {`${dayjs(application.statusUpdatedAt).fromNow(true)} siden`}
-                </Tooltip>
+                    <Tooltip withArrow label={dayjs(application.latestInteraction).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
+                        {/* @ts-ignore */}
+                        {`${dayjs(application.latestInteraction).fromNow(true)} siden`}
+                    </Tooltip>
                 </td>
             }
             <td>

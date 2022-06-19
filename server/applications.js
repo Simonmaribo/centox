@@ -21,9 +21,8 @@ module.exports = (db) => {
                 form: formObject,
                 user: userObject,
                 createdAt: new Date().getTime(),
-                statusUpdatedAt: new Date().getTime(),
                 status: "pending",
-                comments: [],
+                interactions: [],
                 answers: answers
             }, (err, res) => callback({ status: 200, message: "Ansøgningen er blevet oprettet!", applicationId: res.insertedId }));
         } catch(err) {
@@ -74,9 +73,9 @@ module.exports = (db) => {
                 var statusObject = [];
                 for(var i = 0; i < status.length; i++)
                     statusObject.push({ status: status[i] });
-                return db.applications.find({ form: formObject, '$or': statusObject }, { projection: { answers: 0, comments: 0 }, skip: (page - 1) * limit, limit: limit, sort: { createdAt: -1} }).toArray();
+                return db.applications.find({ form: formObject, '$or': statusObject }, { projection: { answers: 0, interactions: 0 }, skip: (page - 1) * limit, limit: limit, sort: { createdAt: -1} }).toArray();
             } else {
-                return db.applications.find({ form: formObject, status: status }, { projection: { answers: 0, comments: 0 }, skip: (page - 1) * limit, limit: limit, sort: { createdAt: -1} }).toArray();
+                return db.applications.find({ form: formObject, status: status }, { projection: { answers: 0, interactions: 0 }, skip: (page - 1) * limit, limit: limit, sort: { createdAt: -1} }).toArray();
             }
         }
         catch(err) {
@@ -144,7 +143,7 @@ module.exports = (db) => {
         try {
             var applicationObject = new ObjectId(applicationId);
             var userObject = new ObjectId(userId);
-            await db.applications.updateOne({ _id: applicationObject }, { $set: { status: status, statusUpdatedAt: new Date().getTime(), statusUpdatedBy: userObject } }, (err, res) => {
+            await db.applications.updateOne({ _id: applicationObject }, { $set: { latestInteraction: new Date().getTime() }, $push: { interactions: { type: 'statusUpdate', user: userObject, status: status, timestamp: new Date().getTime() } } }, (err, res) => {
                 if(err){
                     console.log(err);
                     return callback({ status: 500, message: 'Der opstod en intern fejl.' });
@@ -168,7 +167,7 @@ module.exports = (db) => {
         try {
             var applicationObject = new ObjectId(applicationId);
             var userObject = new ObjectId(userId);
-            await db.applications.updateOne({ _id: applicationObject }, { $push: { comments: { user: userObject, text: comment, createdAt: new Date().getTime() } } }, (err, res) => {
+            await db.applications.updateOne({ _id: applicationObject }, { $set: { latestInteraction: new Date().getTime() }, $push: { interactions: { type: 'comment', user: userObject, text: comment, timestamp: new Date().getTime() } } }, (err, res) => {
                 if(err){
                     console.log(err);
                     return callback({ status: 500, message: 'Der opstod en intern fejl.' });
@@ -177,6 +176,7 @@ module.exports = (db) => {
             });
         }
         catch(err) {
+            console.log(err);
             return callback({ status: 500, message: 'Der opstod en intern fejl.' });
         }
     }

@@ -4,8 +4,7 @@ import Form from "../../types/form";
 import User from "../../types/user";
 import ApplicationAnswers from "./ApplicationAnswers";
 import ApplicationInfo from "./ApplicationInfo";
-import ApplicationCommentBox from "./comments/ApplicationCommentBox";
-import ApplicationStatusChanged from "./status/ApplicationStatusChangedBox";
+import ApplicationInteractionBox from "./interactions/ApplicationInteractionBox";
 
 export default function ApplicationBox({ user, application, form }: {user: User, application: Application, form: Form}) {
     return (
@@ -14,8 +13,7 @@ export default function ApplicationBox({ user, application, form }: {user: User,
             <Divider labelPosition="center" label='Svar'/>
             <ApplicationAnswers form={form} application={application}/>
             <Box sx={{ marginTop: '1rem'}}>
-                <ApplicationCommentBox form={form} application={application}/>
-                { application.statusUpdatedBy && <ApplicationStatusChanged application={ application }/> }
+                <ApplicationInteractionBox form={form} application={application}/>
             </Box>
         </Paper>
     )

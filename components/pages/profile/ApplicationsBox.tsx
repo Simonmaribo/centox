@@ -57,7 +57,7 @@ export default function ApplicationsBox({ isProfile, user }: { isProfile: boolea
                                 </Box>
                             </Box>
                             <Box sx={{display: 'flex', justifyContent: 'center', flexGrow: 1}}>
-                                <Tooltip withArrow label={`Sidst opdateret ${dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')}`} transition='fade' transitionDuration={200}>
+                                <Tooltip withArrow label={`Seneste interaktion ${dayjs(application.latestInteraction).format('DD/MM/YYYY, HH:mm')}`} transition='fade' transitionDuration={200}>
                                     <StatusBadge status={application.status} sx={{ cursor: 'pointer'}} />
                                 </Tooltip>
                             </Box>

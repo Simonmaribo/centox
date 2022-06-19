@@ -18,7 +18,7 @@ export default function ApplicationList({ status, form, full }: { status: string
                     <Box component='tr'>
                         <th>Brugernavn</th>
                         <th>Status</th> 
-                        { full && <th>Status ændret</th> }
+                        { full && <th>Seneste interaktion</th> }
                         <th>Oprettet</th>
                     </Box>
                 </Box>

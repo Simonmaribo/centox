@@ -1,15 +1,15 @@
 import Comment from "./comment";
 import Form from "./form";
+import StatusUpdate from "./statusUpdate";
 
 export default interface Application {
     _id: string;
     form: Form['_id'];
     user: string;
     createdAt: number;
-    statusUpdatedAt: number;
-    statusUpdatedBy: string;
+    latestInteraction?: number;
+    interactions: (Comment | StatusUpdate)[] ;
     status: "pending" | "accepted" | "rejected";
-    comments: Comment[];
     answers: {
         [key: string]: string;
     }
