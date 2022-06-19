@@ -57,7 +57,7 @@ module.exports = (db) => {
         var application = await applications.getApplication(req.params.id);
         if(!application) return res.status(404).json({ message: "Ansøgningen blev ikke fundet." });
         
-        if(req.user.role != 'admin' || req.user._id.toString() != application.user.toString()) return res.status(401).json({ message: "Du har ikke adgang til at slette ansøgninger." });
+        if(req.user.role != 'admin' && req.user._id.toString() != application.user.toString()) return res.status(401).json({ message: "Du har ikke adgang til at slette ansøgninger." });
         
         await applications.deleteApplication(req.params.id, (response) => {
             return res.status(response.status).json({ message: response.message });
