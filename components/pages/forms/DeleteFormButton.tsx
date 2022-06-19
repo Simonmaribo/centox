@@ -16,7 +16,7 @@ export default function DeleteFormButton({ isSubmitting, form }: { isSubmitting:
         .then((response) => {
             showNotification({
                 message: response.message,
-                title: 'Success',
+                title: 'Succes',
                 color: 'teal',
                 radius: 'md'
             })
@@ -25,7 +25,7 @@ export default function DeleteFormButton({ isSubmitting, form }: { isSubmitting:
         .catch((error) => {
             showNotification({
                 message: error.message,
-                title: 'Error',
+                title: 'Fejl',
                 color: 'red',
                 radius: 'md'
             })
@@ -34,16 +34,15 @@ export default function DeleteFormButton({ isSubmitting, form }: { isSubmitting:
 
     return (
         <>
-            <Button loading={isSubmitting} color='red' variant="outline" onClick={() => setDeleteModalVisible(true)}>Delete form</Button>
+            <Button loading={isSubmitting} color='red' variant="outline" onClick={() => setDeleteModalVisible(true)}>Slet skema</Button>
             <ConfirmationModal 
-                title="Delete this form?" 
+                title="Slet dette skema?" 
                 opened={isDeleteModalVisible} 
                 setOpened={setDeleteModalVisible}
-                buttonText="Yes, delete form"
+                buttonText="Ja, slet skema"
                 onConfirm={() => handleDeleteForm()}
             >
-                Hey there, are you sure you want to delete this form?<br/>
-                All data will be lost. All of users applications will be deleted.
+                Er du sikker på at du vil slette dette skema? Alle ansøgninger til dette skema vil også blive slettet.
             </ConfirmationModal>
         </>
     )

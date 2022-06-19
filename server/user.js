@@ -51,7 +51,7 @@ module.exports = (db) => {
                 id: data.id,
                 username: data.username,
                 avatar: data.avatar,
-                role: 'default',
+                role: 'spiller',
                 createdAt: new Date().getTime(),
             }
             db.users.insertOne(user, async (err, res) => {
@@ -77,9 +77,9 @@ module.exports = (db) => {
             }, async (err, res) => {
                 if (err) {
                     console.error(err);
-                    return callback({status: 404, message: 'Something went wrong.'});
+                    return callback({status: 404, message: 'Der var noget som gik galt.'});
                 }
-                return callback({status: 200, message: `Logged in successfully.`, data: { token: token }});
+                return callback({status: 200, message: `Du har logget ind.`, data: { token: token }});
             });
         }
     }
@@ -94,12 +94,12 @@ module.exports = (db) => {
                 console.error(err);
                 callback({
                     status: 400,
-                    message: 'Something went wrong logging out'
+                    message: 'Noget gik galt ved at logge ud'
                 });
             } else {
                 callback({
                     status: 200,
-                    message: 'Logged out succesfully.'
+                    message: 'Logget ud.'
                 });
             }
         });
@@ -116,12 +116,12 @@ module.exports = (db) => {
                 console.error(err);
                 callback({
                     status: 400,
-                    message: 'Something went wrong logging out of all sessions.'
+                    message: 'Noget gik galt ved at logge ud af alle sessioner.'
                 });
             } else {
                 callback({
                     status: 200,
-                    message: 'Logged out of all sessions succesfully.'
+                    message: 'Logget ud af alle sessioner.'
                 });
             }
         });
@@ -217,15 +217,15 @@ module.exports = (db) => {
      */
     obj.updateRole = async (userId, role, callback) => {
         var user = await db.users.findOne({ _id: new ObjectId(userId) });
-        if (!user) callback({status: 404, message: 'User not found.'});
+        if (!user) callback({status: 404, message: 'Brugeren blev ikke fundet.'});
         else {
             user.role = role;
             db.users.updateOne({ _id: new ObjectId(userId) }, {$set: user}, (err, res) => {
                 if (err) {
                     console.error(err);
-                    callback({status: 404, message: 'Something went wrong.'});
+                    callback({status: 404, message: 'Der gik noget galt.'});
                 } else {
-                    callback({status: 200, message: 'Role updated.'});
+                    callback({status: 200, message: 'Ranken er blevet opdateret.'});
                 }
             });
         }

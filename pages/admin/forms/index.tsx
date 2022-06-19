@@ -5,7 +5,7 @@ import AppFormList from "../../../components/pages/forms/FormList";
 
 export default function Applications(){
     return (
-        <PageContent admin={true} title="Admin - Forms">
+        <PageContent admin={true} title="Admin - Skemaer">
             <Container size={'md'}>
                 <Box mt={30}>
                     <Paper withBorder>

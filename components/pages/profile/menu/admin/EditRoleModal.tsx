@@ -21,7 +21,7 @@ interface EditRoleValues {
 }
 
 const schema = Yup.object().shape({
-    role: Yup.string().required("The role is required."),
+    role: Yup.string().required("Feltet 'role' er påkrævet."),
 });
 
 
@@ -55,7 +55,7 @@ export default function RolesModal({ user, isVisible, setVisible }: IEditRolePro
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Success',
+                    title: 'Succes',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -64,7 +64,7 @@ export default function RolesModal({ user, isVisible, setVisible }: IEditRolePro
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Error',
+                    title: 'Fejl',
                     color: 'red',
                     radius: 'md'
                 })
@@ -75,17 +75,17 @@ export default function RolesModal({ user, isVisible, setVisible }: IEditRolePro
     }
     
     return (
-        <Modal opened={isVisible} onClose={() => setVisible(false)} title={<Text weight={600}>{`Change ${user.username}'s role`}</Text>}>
+        <Modal opened={isVisible} onClose={() => setVisible(false)} title={<Text weight={600}>{`Ændrer ${user.username}'s rank`}</Text>}>
             <form onSubmit={form.onSubmit(async (values) => await onSubmit(values))}>
                 <Select
                     required
-                    label="Role"
-                    placeholder="The user's role"
+                    label="Rank"
+                    placeholder="Brugerens rank"
                     {...form.getInputProps('role')}
                     data={data}
                 />
                 <Group position="right" mt="xl">
-                    <Button type="submit" loading={isSubmitting}>Confirm</Button>
+                    <Button type="submit" loading={isSubmitting}>Gem</Button>
                 </Group>
             </form>
         </Modal>

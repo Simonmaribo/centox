@@ -14,11 +14,11 @@ export default function FormPermissions({ form, setForm }: { form: Form, setForm
             <Table>
                 <thead>
                     <tr>
-                        <th>Role</th>
-                        <th>Can create</th>
-                        <th>Can view others</th>
-                        <th>Can comment</th>
-                        <th>Can change status</th>
+                        <th>Rank</th>
+                        <th>Kan oprette</th>
+                        <th>Kan se andres</th>
+                        <th>Kan kommentere </th>
+                        <th>Kan ændre status</th>
                     </tr>
                 </thead>
                 <tbody>

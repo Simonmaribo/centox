@@ -16,10 +16,10 @@ export default function ApplicationList({ status, form, full }: { status: string
             <Table highlightOnHover verticalSpacing={'md'} horizontalSpacing='xl'>
                 <Box component='thead'>
                     <Box component='tr'>
-                        <th>Username</th>
+                        <th>Brugernavn</th>
                         <th>Status</th> 
-                        { full && <th>Status changed</th> }
-                        <th>Created</th>
+                        { full && <th>Status ændret</th> }
+                        <th>Oprettet</th>
                     </Box>
                 </Box>
                 <tbody>

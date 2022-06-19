@@ -14,7 +14,7 @@ export default function ApplicationInfo({ user, application, form }: { user: Use
         <Box>
             <Box sx={{ display: 'flex', justifyContent: 'end'}}><AdminMenu application={application} form={form} user={user}/></Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-                <Text weight={600} sx={{ fontSize: 45 }}>{form.name} application</Text>
+                <Text weight={600} sx={{ fontSize: 45 }}>{form.name} ansøgning</Text>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1rem' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem'}}>

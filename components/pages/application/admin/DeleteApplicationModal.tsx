@@ -16,7 +16,7 @@ export default function DeleteApplicationMenuItem({ application, isVisible, setV
             .then((response) => {
                 showNotification({
                     message: response?.message,
-                    title: 'Success',
+                    title: 'Succes',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -25,7 +25,7 @@ export default function DeleteApplicationMenuItem({ application, isVisible, setV
             .catch((error) => {
                 showNotification({
                     message: error?.message,
-                    title: 'Error',
+                    title: 'Fejl',
                     color: 'red',
                     radius: 'md'
                 })
@@ -34,13 +34,13 @@ export default function DeleteApplicationMenuItem({ application, isVisible, setV
 
     return (
         <ConfirmationModal 
-            title="Delete this application?" 
+            title="Slet denne ansøgning?" 
             opened={isVisible} 
             setOpened={setVisible}
-            buttonText="Yes, delete application"
+            buttonText="Ja, slet ansøgning"
             onConfirm={() => handleDeleteApplication()}
-        >
-            Hey there, are you sure you want to delete this application? This action cannot be undone.
+        >  
+            Er du sikker på du vil slette denne ansøgning? Dette kan ikke fortrydes.
         </ConfirmationModal>
     )
 }

@@ -16,9 +16,9 @@ export default function ClosedApplications(){
     const { isLoading, isError, data } = useQuery(['form', id], async () => await getForm(id));
     
     return (
-        <PageContent title={(isLoading || isError || !data || !data.form) ? "Applications" : `Closed ${data.form.name} applications`}>
+        <PageContent title={(isLoading || isError || !data || !data.form) ? "Ansøgninger" : `Lukkede ${data.form.name} ansøgninger`}>
             {
-                isError ? <Error error={data?.message || "Form not found"}/> 
+                isError ? <Error error={data?.message || "Skemaet blev ikke fundet"}/> 
                     : isLoading || !data || !data.form ? <LoadingScreen/>
                         : <ApplicationListStatus status={['accepted', 'rejected']} form={data.form} full/>
             }

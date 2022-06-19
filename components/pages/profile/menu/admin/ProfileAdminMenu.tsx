@@ -14,10 +14,10 @@ export default function ProfileMenu({ user }: { user: User }) {
         <>
             <Menu transition="pop" withArrow placement="end" control={<ActionIcon size={35} color='blue'><BsThreeDotsVertical size={25}/></ActionIcon>}>
                 <Menu.Item icon={<FiEdit size={16} />} onClick={() => setVisibleModal('editrole')}>
-                    <Text weight={500} size="sm">Change role</Text>
+                    <Text weight={500} size="sm">Ændre rank</Text>
                 </Menu.Item>
                 <Menu.Item disabled icon={<FaRegTrashAlt size={16} />} color='red'>
-                    <Text weight={500} size="sm">Delete user</Text>
+                    <Text weight={500} size="sm">Slet bruger</Text>
                 </Menu.Item>
             </Menu>
             <EditRoleModal user={user} isVisible={visibleModal == 'editrole'} setVisible={setVisibleModal}/>

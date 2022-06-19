@@ -1,7 +1,6 @@
 import { Box, Avatar, Tooltip, ActionIcon, Text, Select, ListItem } from "@mantine/core";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
-import { forwardRef } from "react";
 import { FaCrown } from "react-icons/fa";
 import RoleBadge from "../../elements/RoleBadge";
 import User from "../../types/user";
@@ -19,7 +18,7 @@ export default function UserListItem({ user }: UserListItemProps){
                 <Avatar src={user.avatar} radius="xl" />
                 <Text weight={500}>{user.username}</Text>
                 {user.owner &&
-                    <Tooltip withArrow label={'This user is the owner.'} transition='fade' transitionDuration={200} sx={{ marginLeft: '-1rem'}}>
+                    <Tooltip withArrow label={'Denne bruger er ejeren af siden.'} transition='fade' transitionDuration={200} sx={{ marginLeft: '-1rem'}}>
                         <ActionIcon color="orange" radius="xs" variant="transparent"><FaCrown/></ActionIcon>
                     </Tooltip>
                 }
@@ -28,7 +27,7 @@ export default function UserListItem({ user }: UserListItemProps){
             <Box component='td'>
                 <Tooltip withArrow label={dayjs(user.createdAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                     {/* @ts-ignore */}
-                    {`${dayjs(user.createdAt).fromNow(true)} ago`}
+                    {`${dayjs(user.createdAt).fromNow(true)} siden`}
                     {/*new Date().getTime() < user.createdAt + 127800000 ?
                         `${dayjs(user.createdAt).fromNow(true)} ago`
                         :

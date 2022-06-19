@@ -11,7 +11,7 @@ export default function ApplicationBox({ user, application, form }: {user: User,
     return (
         <Paper p='md' withBorder sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
             <ApplicationInfo form={form} user={user} application={application}/>
-            <Divider labelPosition="center" label='Answers'/>
+            <Divider labelPosition="center" label='Svar'/>
             <ApplicationAnswers form={form} application={application}/>
             <Box sx={{ marginTop: '1rem'}}>
                 <ApplicationCommentBox form={form} application={application}/>

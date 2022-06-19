@@ -17,9 +17,9 @@ export default function Form(){
     const { isLoading, isError, data } = useQuery(['form', id], async () => await getForm(id));
 
     return (
-        <PageContent admin={true} title={(isLoading || isError || !data || !data.form) ? "Admin - Form" : `Admin - ${data.form.name} form`}>
+        <PageContent admin={true} title={(isLoading || isError || !data || !data.form) ? "Admin - Skema" : `Admin - ${data.form.name} skema`}>
             { isError 
-            ? <Error error={data?.message || "Form not found"}/> 
+            ? <Error error={data?.message || 'Skemaet blev ikke fundet'}/> 
             : (isLoading || !data || !data.form 
                 ? <LoadingScreen/>
                 : 

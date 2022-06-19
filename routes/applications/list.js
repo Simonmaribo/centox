@@ -10,7 +10,7 @@ module.exports = (db) => {
     const applications = require('../../server/applications')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 15, "Too many requests. Try again later.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 15, "For mange anmodninger. Prøv igen senere.")
 
 
     // Create application
@@ -26,9 +26,9 @@ module.exports = (db) => {
         }
         
         var form = await forms.getForm(req.params.id);
-        if(!form) return res.status(404).send({ status: 404, message: "Form not found." });
+        if(!form) return res.status(404).send({ status: 404, message: "Skemaet blev ikke fundet." });
 
-        if(!form.permissions[req.user?.role] || !form.permissions[req.user?.role].viewOthers) return res.status(401).json({ message: "You do not have permission to view other applications for this type of form." });
+        if(!form.permissions[req.user?.role] || !form.permissions[req.user?.role].viewOthers) return res.status(401).json({ message: "Du har ikke adgang til at se denne type ansøgninger." });
 
         var page = parseInt(req.params.page);
         var applicationsArr = await applications.getAllApplications(req.params.id, status, page, 10);

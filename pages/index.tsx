@@ -10,7 +10,7 @@ export default function Page() {
     });
 
     return (
-        <PageContent title="Your Profile">
+        <PageContent title="Din profil">
             { isError 
             ? <Error /> 
             : (isLoading 

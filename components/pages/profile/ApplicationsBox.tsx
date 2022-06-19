@@ -27,9 +27,9 @@ export default function ApplicationsBox({ isProfile, user }: { isProfile: boolea
 
     return (
         <Box>
-            <Divider my='md' color='gray' label={<Text color='dark'>Applications</Text>} labelPosition='center'/>
+            <Divider my='md' color='gray' label={<Text color='dark'>Ansøgninger</Text>} labelPosition='center'/>
             { applications.applications.length <= 0 ?
-                <Alert icon={<BsQuestionCircle size={16}/>} color='orange'>{isProfile ? "You have not created any applications" : `${user.username} has not created any applications`}</Alert>
+                <Alert icon={<BsQuestionCircle size={16}/>} color='orange'>{isProfile ? "Du har ikke oprettet nogle ansøgninger." : `${user.username} har ikke oprettet nogle ansøgninger.`}</Alert>
                 :
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     { applications.applications.map((application, index) => (
@@ -57,14 +57,14 @@ export default function ApplicationsBox({ isProfile, user }: { isProfile: boolea
                                 </Box>
                             </Box>
                             <Box sx={{display: 'flex', justifyContent: 'center', flexGrow: 1}}>
-                                <Tooltip withArrow label={`Last updated ${dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')}`} transition='fade' transitionDuration={200}>
+                                <Tooltip withArrow label={`Sidst opdateret ${dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')}`} transition='fade' transitionDuration={200}>
                                     <StatusBadge status={application.status} sx={{ cursor: 'pointer'}} />
                                 </Tooltip>
                             </Box>
                             <Box>
                                 <Tooltip withArrow label={dayjs(application.createdAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                                     {/* @ts-ignore */}
-                                    {`${dayjs(application.createdAt).fromNow(true)} ago`}
+                                    {`${dayjs(application.createdAt).fromNow(true)} siden`}
                                 </Tooltip>
                             </Box>
                         </Box>

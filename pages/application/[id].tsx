@@ -16,9 +16,9 @@ export default function Application(){
     const { isLoading, isError, data } = useQuery(['application', id], async () => await getApplication(id));
     
     return (
-        <PageContent title={(isLoading || isError || !data) ? "Application" : `${data.user?.username}'s ${data.form?.name} application`}>
+        <PageContent title={(isLoading || isError || !data) ? "Ansøgning" : `${data.user?.username}'s ${data.form?.name} ansøgning`}>
             { isError 
-            ? <Error error={data?.message ? data?.message : 'Something went wrong'}/> 
+            ? <Error error={data?.message ? data?.message : 'Der gik noget galt.'}/> 
             : (isLoading || !data || !data.user || !data.application || !data.form 
                 ? <LoadingScreen/>
                 : 

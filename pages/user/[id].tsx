@@ -15,9 +15,9 @@ export default function UserProfile(){
     const { isLoading, isError, data } = useQuery(['user', id], async () => await getUser(id));
 
     return (
-        <PageContent title={(isLoading || isError || !data || !data.user) ? "Profile" : `${data?.user?.username}'s profile`}>
+        <PageContent title={(isLoading || isError || !data || !data.user) ? "Profil" : `${data?.user?.username}'s profil`}>
             { isError 
-            ? <Error error={data?.message ? data?.message : 'User not found'}/> 
+            ? <Error error={data?.message ? data?.message : 'Brugeren blev ikke fundet.'}/> 
             : (isLoading || !data || !data.user 
                 ? <LoadingScreen/>
                 : 

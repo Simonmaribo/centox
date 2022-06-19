@@ -13,7 +13,7 @@ module.exports = (db) => {
      */
     obj.createForm = async (callback) => {
         await db.forms.insertOne({
-            name: 'Newly created form',
+            name: 'Nyoprettet skema',
             fields: [],
             permissions: {
                 admin: {
@@ -28,8 +28,8 @@ module.exports = (db) => {
         }, async (err, res) => {
             if(err) {
                 console.log(err);
-                callback({ status: 400, message: 'Form could not be created' });
-            } else callback({ status: 200, message: 'New form created' });
+                callback({ status: 400, message: 'Skemaet kunne ikke oprettes.' });
+            } else callback({ status: 200, message: 'Nyt skema oprettet.' });
         })
     }
 
@@ -56,8 +56,8 @@ module.exports = (db) => {
         await db.forms.find({}, { projection: { fields: 0 }}).toArray(async (err, res) => {
             if(err) {
                 console.log(err);
-                callback({ status: 400, message: 'Forms could not be retrieved' });
-            } else callback({ status: 200, message: 'Forms retrieved', data: res });
+                callback({ status: 400, message: 'Skemaerne kunne ikke hentes' });
+            } else callback({ status: 200, message: 'Skemaerne er blevet hentet', data: res });
         })
     }
 
@@ -90,16 +90,16 @@ module.exports = (db) => {
         try {
             delete form._id
             var dbForm = await obj.getForm(formId);
-            if(!dbForm) return callback({ status: 404, message: 'Form not found' });
+            if(!dbForm) return callback({ status: 404, message: 'Skemaet blev ikke fundet.' });
             await db.forms.replaceOne({ _id: new ObjectId(formId) }, { ...form, updatedAt: new Date().getTime() }, async (err, res) => {
                 if(err) {
                     console.log(err);
-                    callback({ status: 400, message: 'Form could not be saved' });
-                } else callback({ status: 200, message: 'The form has been saved' });
+                    callback({ status: 400, message: 'Skemaet kunne ikke gemmes.' });
+                } else callback({ status: 200, message: 'Skemaet er blevet gemt.' });
             })
         } catch(err) {
             console.log(err)
-            callback({ status: 400, message: 'Form could not be saved' });
+            callback({ status: 400, message: 'Skemaet kunne ikke gemmes.' });
         }
     }
 
@@ -110,18 +110,18 @@ module.exports = (db) => {
      */
     obj.deleteForm = async (formId, callback) => {
         var form = await obj.getForm(formId);
-        if(!form) return callback({ status: 404, message: 'Form not found' });
+        if(!form) return callback({ status: 404, message: 'Skemaet blev ikke fundet.' });
         await db.forms.deleteOne({ _id: new ObjectId(form._id) }, async (err, res) => {
             if(err) {
                 console.log(err);
-                callback({ status: 400, message: 'Form could not be deleted' });
+                callback({ status: 400, message: 'Skemaet kunne ikke blive slettet.' });
             } else {
                 // Delete all applications associated with this form
                 await db.applications.deleteMany({ form: new ObjectId(form._id)}, async (err, res) => {
                     if(err) {
                         console.log(err);
-                        callback({ status: 400, message: 'Form could not be deleted' });
-                    } else callback({ status: 200, message: 'The form has been deleted.' });
+                        callback({ status: 400, message: 'Skemaet kunne ikke blive slettet.' });
+                    } else callback({ status: 200, message: 'Skemaet er blevet slettet.' });
                 });
             }
         })

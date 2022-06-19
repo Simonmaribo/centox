@@ -18,7 +18,7 @@ export default function CreateApplicationButton({ form, answers }: { form: Form,
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Success',
+                    title: 'Succes',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -27,7 +27,7 @@ export default function CreateApplicationButton({ form, answers }: { form: Form,
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Error',
+                    title: 'Fejl',
                     color: 'red',
                     radius: 'md'
                 })
@@ -37,7 +37,7 @@ export default function CreateApplicationButton({ form, answers }: { form: Form,
 
     return (
         <Button variant="outline" color="orange" radius="xl" loading={isSubmitting} onClick={handleCreate}>
-            Create application
+            Opret ansøgning
         </Button>
     )
 }

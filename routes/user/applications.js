@@ -11,11 +11,11 @@ module.exports = (db) => {
     const forms = require('../../server/forms')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 30, "Too many requests. Try again later.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 30, "For mange anmodninger. Prøv igen senere.")
 
     router.get('/:discordId', rateLimiter, auth.ensureAuthenticationWithUser, async (req, res) => {
         var userObj = await user.getUser(req.params.discordId);
-        if(!userObj) return res.status(404).json({ message: "User not found" });
+        if(!userObj) return res.status(404).json({ message: "Brugeren blev ikke fundet." });
 
         var permissions = await forms.getAllFormPermissions();
         var applicationArr = await applications.getUserApplications(userObj._id);

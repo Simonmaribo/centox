@@ -9,7 +9,7 @@ module.exports = (db) => {
     const auth = require('../../server/auth')(db);
 
     // Create rate limiter
-    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 100, "Too many requests. Try again later.")
+    const rateLimiter = require('../../server/utils/rateLimiter')(2 * 60 * 1000, 100, "For mange anmodninger. Prøv igen senere.")
 
     router.get('/', rateLimiter, auth.ensureAuthentication, async (req, res) => {
         await forms.getForms((response) => {
@@ -41,7 +41,7 @@ module.exports = (db) => {
         const { form } = req.body;
 
         // check if the form contains a name
-        if(!form.name) return res.status(400).json({ message: "Form must have a name." });
+        if(!form.name) return res.status(400).json({ message: "Der skal angives et navn til skemaet." });
         if(!form.updatedAt || !form.createdAt) return res.status(400).json({ message: 'Form cannot change its creation or update date.' });
         if(!form.permissions) return res.status(400).json({ message: 'Form must have a permissions object.' });
         
@@ -56,11 +56,11 @@ module.exports = (db) => {
         for(let field of form.fields){
             if(!field.id) return res.status(400).json({ message: `Form field ${i} must have an id.` });
             if(!field.type || !['text', 'heading', 'shorttext', 'longtext', 'select', 'checkbox'].includes(field.type)) 
-                return res.status(400).json({ message: `Form field ${i} must have a type.` });
+                return res.status(400).json({ message: `Feltet ${i} skal have en type.` });
             if(field.type == 'text' && !field.description)
-                return res.status(400).json({ message: `Form field ${i} must have text.` });
+                return res.status(400).json({ message: `Feltet ${i} skal have tekst.` });
             if(field.type != 'text' && !field.label)
-                return res.status(400).json({ message: `Form field ${i} must have a heading/question.` });            
+                return res.status(400).json({ message: `Feltet ${i} skal have et spørgsmål eller overskrift.` });            
             i++;
         }
 

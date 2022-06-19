@@ -25,7 +25,7 @@ export default function ApplicationCreateComment({ form, application }: { form: 
         .then((response) => {
             showNotification({
                 message: response.message,
-                title: 'Success',
+                title: 'Succes',
                 color: 'teal',
                 radius: 'md'
             })
@@ -34,7 +34,7 @@ export default function ApplicationCreateComment({ form, application }: { form: 
         .catch((error) => {
             showNotification({
                 message: error.message,
-                title: 'Error',
+                title: 'Fejl',
                 color: 'red',
                 radius: 'md'
             })
@@ -45,7 +45,7 @@ export default function ApplicationCreateComment({ form, application }: { form: 
 
     return (
         <Box sx={{ marginBottom: 14, marginLeft: 32, marginTop: 10, marginRight: 32 }}>
-            <Textarea label='Create a comment' placeholder='Write something constructive here' autosize required value={comment} onChange={(event) => setComment(event.currentTarget.value)}/>
+            <Textarea label='Kommenter ansøgningen' placeholder='Skriv noget konstruktivt her' autosize required value={comment} onChange={(event) => setComment(event.currentTarget.value)}/>
             <Group position="right" mt="md">
                 <Button 
                     variant="light"
@@ -59,7 +59,7 @@ export default function ApplicationCreateComment({ form, application }: { form: 
                     onClick={handleCreateComment}
                     loading={isSubmitting}
                 >
-                    Comment
+                    Kommenter
                 </Button>              
             </Group>
         </Box>

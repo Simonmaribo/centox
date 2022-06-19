@@ -16,7 +16,7 @@ export default function ApplicationAnswers({ form, application}: {form: Form, ap
                                     description={field.description} 
                                     required={field.required}
                                     value={application.answers[field.id]}
-                                    error={field.required && !application.answers[field.id] ? "This question has not been answered" : undefined}
+                                    error={field.required && !application.answers[field.id] ? "Dette spørgsmål er ikke blevet besvaret." : undefined}
                                     disabled
                                 />
                             }
@@ -27,7 +27,7 @@ export default function ApplicationAnswers({ form, application}: {form: Form, ap
                                     description={field.description} 
                                     required={field.required} 
                                     value={application.answers[field.id]}
-                                    error={field.required && !application.answers[field.id] ? "This question has not been answered" : undefined}
+                                    error={field.required && !application.answers[field.id] ? "Dette spørgsmål er ikke blevet besvaret." : undefined}
                                     disabled
                                     autosize 
                                     minRows={5}

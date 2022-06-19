@@ -13,15 +13,15 @@ export default function ApplicationStatusChanged({ application }: { application:
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2rem' }}>
             <Box sx={{ display: 'flex', gap: '0.2rem', justifyContent: 'center', alignItems: 'center'}}>
-                {isLoading ? <Text>Loading...</Text> : isError || !data?.user ? <Text>Error</Text> : <UserBadge user={data?.user}/>}
-                <Text>changed the status to</Text>
+                {isLoading ? <Text>Loader...</Text> : isError || !data?.user ? <Text>Fejl</Text> : <UserBadge user={data?.user}/>}
+                <Text>ændrede status til</Text>
                 <StatusBadge status={application.status}/>
             </Box>
             <Tooltip withArrow label={dayjs(application.statusUpdatedAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                 <Text weight={400} sx={{ opacity: 0.75, fontSize: 12 }}>
                     {new Date().getTime() < application.statusUpdatedAt + 127800000 ?
                         /* @ts-ignore */
-                        `${dayjs(application.statusUpdatedAt).fromNow(true)} ago`
+                        `${dayjs(application.statusUpdatedAt).fromNow(true)} siden`
                         :
                         dayjs(application.statusUpdatedAt).format('HH:mm, DD/MM/YYYY')
                     }

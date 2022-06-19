@@ -16,7 +16,7 @@ const Error = ({ title, error, height}: { title: string, error: string, height: 
 
 Error.defaultProps = {
     title: "Oh snap!",
-    error: "Something went wrong.",
+    error: "Der gik noget galt.",
     height: '100vh'
 }
 

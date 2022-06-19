@@ -19,7 +19,7 @@ export default function ProfileBox({ user, isAdmin, isViewing }: { user: User, i
                                 <Box sx={{ display: 'flex', alignItems: 'center'}}>
                                     <Text sx={{ fontSize: 25 }} weight={500}>{user.username}</Text>
                                     {user.owner &&
-                                        <Tooltip withArrow label={'This user is the owner.'} transition='fade' transitionDuration={200}>
+                                        <Tooltip withArrow label={'Denne bruger er ejeren af siden.'} transition='fade' transitionDuration={200}>
                                             <ActionIcon color="orange" radius="xs" variant="transparent"><FaCrown/></ActionIcon>
                                         </Tooltip>
                                     }

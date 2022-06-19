@@ -28,9 +28,9 @@ export default function RolesList() {
                 <Table highlightOnHover verticalSpacing={'md'} horizontalSpacing='xl'>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Navn</th>
                             <th>Badge</th>
-                            <th>Members</th>
+                            <th>Medlemmer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +47,7 @@ export default function RolesList() {
                     </tbody>
                 </Table>
                 <Box sx={{ margin: '1rem'}}>
-                    <Button variant="outline" radius='xl' onClick={() => openRoleModal(undefined)} leftIcon={<FaPlus/>}>Create role</Button>
+                    <Button variant="outline" radius='xl' onClick={() => openRoleModal(undefined)} leftIcon={<FaPlus/>}>Opret rank</Button>
                 </Box>
             </Box>
             }

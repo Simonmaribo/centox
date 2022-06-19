@@ -16,7 +16,7 @@ export default function ConfirmationModal({ opened, setOpened, title, children, 
                 {children}
             </Box>
             <Group position="right" mt="xl">
-                <Button variant='outline' onClick={() => setOpened(!opened)}>Cancel</Button>
+                <Button variant='outline' onClick={() => setOpened(!opened)}>Annuller</Button>
                 <Button color='red' variant="outline" onClick={() => {
                     setOpened(!opened);
                     onConfirm();

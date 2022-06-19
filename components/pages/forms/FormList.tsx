@@ -25,7 +25,7 @@ export default function AppFormList() {
             .then((response) => {
                 showNotification({
                     message: response.message,
-                    title: 'Success',
+                    title: 'Succes',
                     color: 'teal',
                     radius: 'md'
                 })
@@ -34,7 +34,7 @@ export default function AppFormList() {
             .catch((error) => {
                 showNotification({
                     message: error.message,
-                    title: 'Error',
+                    title: 'Fejl',
                     color: 'red',
                     radius: 'md'
                 })
@@ -48,9 +48,9 @@ export default function AppFormList() {
                 <Table highlightOnHover verticalSpacing={'md'} horizontalSpacing='xl'>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>Navn</th>
+                            <th>Oprettet</th>
+                            <th>Opdateret</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,13 +62,13 @@ export default function AppFormList() {
                                     <Box component='td'>
                                         <Tooltip withArrow label={dayjs(form.createdAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                                             {/* @ts-ignore */}
-                                            {`${dayjs(form.createdAt).fromNow(true)} ago`}
+                                            {`${dayjs(form.createdAt).fromNow(true)} siden`}
                                         </Tooltip>
                                     </Box>
                                     <Box component='td'>
                                         <Tooltip withArrow label={dayjs(form.updatedAt).format('DD/MM/YYYY, HH:mm')} transition='fade' transitionDuration={200}>
                                             {/* @ts-ignore */}
-                                            {`${dayjs(form.updatedAt).fromNow(true)} ago`}
+                                            {`${dayjs(form.updatedAt).fromNow(true)} siden`}
                                         </Tooltip>
                                     </Box>
                                 </Box>
@@ -77,7 +77,7 @@ export default function AppFormList() {
                     </tbody>
                 </Table>
                 <Box sx={{ margin: '1rem'}}>
-                    <Button variant="outline" radius='xl' leftIcon={<FaPlus/>} onClick={createNewForm} disabled={isSubmitting}>Create form</Button>
+                    <Button variant="outline" radius='xl' leftIcon={<FaPlus/>} onClick={createNewForm} disabled={isSubmitting}>Opret skema</Button>
                 </Box>
             </Box>
         </>
